@@ -23,8 +23,8 @@ import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewProfilePhotoBinding;
-import com.sudhindra.deltaappdevproject.utils.GlideApp;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.GlideApp;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 public class NewProfilePhotoActivity extends AppCompatActivity {
 

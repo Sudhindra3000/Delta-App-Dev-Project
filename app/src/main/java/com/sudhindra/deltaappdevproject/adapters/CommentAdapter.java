@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sudhindra.deltaappdevproject.databinding.CommentItemBinding;
-import com.sudhindra.deltaappdevproject.utils.Comment;
+import com.sudhindra.deltaappdevproject.models.Comment;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.util.ArrayList;

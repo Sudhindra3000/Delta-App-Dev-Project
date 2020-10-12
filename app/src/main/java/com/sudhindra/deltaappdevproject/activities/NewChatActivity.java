@@ -18,7 +18,7 @@ import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewChatBinding;
 import com.sudhindra.deltaappdevproject.fragments.SearchFragment;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 import java.io.File;
 

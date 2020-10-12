@@ -47,9 +47,9 @@ import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityChatBinding;
-import com.sudhindra.deltaappdevproject.utils.ChatChannel;
-import com.sudhindra.deltaappdevproject.utils.GlideApp;
-import com.sudhindra.deltaappdevproject.utils.Message;
+import com.sudhindra.deltaappdevproject.models.ChatChannel;
+import com.sudhindra.deltaappdevproject.models.GlideApp;
+import com.sudhindra.deltaappdevproject.models.Message;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.io.File;

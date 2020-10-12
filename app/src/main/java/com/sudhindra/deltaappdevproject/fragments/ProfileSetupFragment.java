@@ -27,7 +27,7 @@ import com.sudhindra.deltaappdevproject.activities.HomeActivity;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileSetupBinding;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.viewmodels.SignUpViewModel;
 
 public class ProfileSetupFragment extends Fragment {

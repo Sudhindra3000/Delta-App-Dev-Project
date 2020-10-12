@@ -1,4 +1,4 @@
-package com.sudhindra.deltaappdevproject.utils;
+package com.sudhindra.deltaappdevproject;
 
 import android.content.Context;
 

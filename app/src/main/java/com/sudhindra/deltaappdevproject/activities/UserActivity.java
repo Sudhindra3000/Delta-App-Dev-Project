@@ -18,7 +18,7 @@ import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityUserBinding;
 import com.sudhindra.deltaappdevproject.fragments.ProfileFragment;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 public class UserActivity extends AppCompatActivity {
 

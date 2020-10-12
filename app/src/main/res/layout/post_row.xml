@@ -15,7 +15,7 @@
 
         <variable
             name="post"
-            type="com.sudhindra.deltaappdevproject.utils.Post" />
+            type="com.sudhindra.deltaappdevproject.models.Post" />
     </data>
 
     <LinearLayout

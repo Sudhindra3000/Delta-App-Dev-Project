@@ -113,7 +113,7 @@
         </service>
 
         <provider
-            android:name=".utils.GenericFileProvider"
+            android:name=".GenericFileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

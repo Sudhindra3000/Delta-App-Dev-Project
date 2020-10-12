@@ -25,7 +25,7 @@ import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentSignUpScreenBinding;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.viewmodels.SignUpViewModel;
 
 import org.json.JSONException;

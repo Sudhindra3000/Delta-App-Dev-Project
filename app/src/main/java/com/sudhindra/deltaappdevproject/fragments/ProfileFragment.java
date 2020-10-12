@@ -42,9 +42,9 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileBinding;
-import com.sudhindra.deltaappdevproject.utils.GlideApp;
-import com.sudhindra.deltaappdevproject.utils.Post;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.GlideApp;
+import com.sudhindra.deltaappdevproject.models.Post;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 import java.util.ArrayList;
 import java.util.Objects;

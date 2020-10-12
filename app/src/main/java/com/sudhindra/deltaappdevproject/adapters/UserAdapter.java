@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sudhindra.deltaappdevproject.databinding.SearchResultRowBinding;
-import com.sudhindra.deltaappdevproject.utils.User;
+import com.sudhindra.deltaappdevproject.models.User;
 
 import java.util.ArrayList;
 

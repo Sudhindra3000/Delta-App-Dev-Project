@@ -14,7 +14,7 @@ import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.databinding.PostRowBinding;
-import com.sudhindra.deltaappdevproject.utils.Post;
+import com.sudhindra.deltaappdevproject.models.Post;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.lang.reflect.Field;

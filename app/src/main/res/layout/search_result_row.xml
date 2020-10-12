@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.sudhindra.deltaappdevproject.utils.User" />
+            type="com.sudhindra.deltaappdevproject.models.User" />
     </data>
 
     <LinearLayout

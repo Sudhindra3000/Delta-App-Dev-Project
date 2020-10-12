@@ -15,7 +15,7 @@ import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityImageBinding;
-import com.sudhindra.deltaappdevproject.utils.GlideApp;
+import com.sudhindra.deltaappdevproject.models.GlideApp;
 
 public class ImageActivity extends AppCompatActivity {
 

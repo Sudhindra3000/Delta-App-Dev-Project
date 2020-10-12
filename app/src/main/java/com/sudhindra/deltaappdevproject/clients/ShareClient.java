@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.core.content.FileProvider;
 
 import com.sudhindra.deltaappdevproject.R;
-import com.sudhindra.deltaappdevproject.utils.Post;
+import com.sudhindra.deltaappdevproject.models.Post;
 
 import java.io.File;
 import java.io.FileOutputStream;

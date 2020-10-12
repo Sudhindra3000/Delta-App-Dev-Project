@@ -19,8 +19,8 @@ import com.sudhindra.deltaappdevproject.databinding.ReceivedMessageTextItemBindi
 import com.sudhindra.deltaappdevproject.databinding.SentMessageFileItemBinding;
 import com.sudhindra.deltaappdevproject.databinding.SentMessageImageItemBinding;
 import com.sudhindra.deltaappdevproject.databinding.SentMessageTextItemBinding;
-import com.sudhindra.deltaappdevproject.utils.GlideApp;
-import com.sudhindra.deltaappdevproject.utils.Message;
+import com.sudhindra.deltaappdevproject.models.GlideApp;
+import com.sudhindra.deltaappdevproject.models.Message;
 
 import java.io.File;
 import java.util.ArrayList;

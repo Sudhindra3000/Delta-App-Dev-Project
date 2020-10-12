@@ -19,7 +19,7 @@ import com.sudhindra.deltaappdevproject.fragments.HomeFragment;
 import com.sudhindra.deltaappdevproject.fragments.MessagesFragment;
 import com.sudhindra.deltaappdevproject.fragments.ProfileFragment;
 import com.sudhindra.deltaappdevproject.fragments.SearchFragment;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 public class HomeActivity extends AppCompatActivity {
 

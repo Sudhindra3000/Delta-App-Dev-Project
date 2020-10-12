@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sudhindra.deltaappdevproject.databinding.ChatChannelItemBinding;
-import com.sudhindra.deltaappdevproject.utils.ChatChannel;
+import com.sudhindra.deltaappdevproject.models.ChatChannel;
 
 import java.util.ArrayList;
 

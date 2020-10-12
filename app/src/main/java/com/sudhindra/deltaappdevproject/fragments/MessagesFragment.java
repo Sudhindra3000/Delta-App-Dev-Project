@@ -28,9 +28,9 @@ import com.sudhindra.deltaappdevproject.adapters.ChatFeedAdapter;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentMessagesBinding;
-import com.sudhindra.deltaappdevproject.utils.ChatChannel;
-import com.sudhindra.deltaappdevproject.utils.Message;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.ChatChannel;
+import com.sudhindra.deltaappdevproject.models.Message;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 import java.io.IOException;
 import java.util.ArrayList;

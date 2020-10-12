@@ -11,7 +11,7 @@ import androidx.core.content.FileProvider;
 
 import com.sudhindra.deltaappdevproject.activities.ChatActivity;
 import com.sudhindra.deltaappdevproject.activities.NewChatActivity;
-import com.sudhindra.deltaappdevproject.utils.Message;
+import com.sudhindra.deltaappdevproject.models.Message;
 
 import org.apache.commons.io.FileUtils;
 

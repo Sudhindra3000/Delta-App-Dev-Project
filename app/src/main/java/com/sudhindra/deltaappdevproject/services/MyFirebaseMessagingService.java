@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

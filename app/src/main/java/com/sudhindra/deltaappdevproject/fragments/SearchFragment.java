@@ -26,8 +26,8 @@ import com.sudhindra.deltaappdevproject.activities.UserActivity;
 import com.sudhindra.deltaappdevproject.adapters.UserAdapter;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentSearchBinding;
-import com.sudhindra.deltaappdevproject.utils.Student;
-import com.sudhindra.deltaappdevproject.utils.User;
+import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

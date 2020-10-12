@@ -2,7 +2,7 @@ package com.sudhindra.deltaappdevproject.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
-import com.sudhindra.deltaappdevproject.utils.Student;
+import com.sudhindra.deltaappdevproject.models.Student;
 
 public class SignUpViewModel extends ViewModel {
 

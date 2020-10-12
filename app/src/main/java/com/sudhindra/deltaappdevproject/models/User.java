@@ -1,4 +1,4 @@
-package com.sudhindra.deltaappdevproject.utils;
+package com.sudhindra.deltaappdevproject.models;
 
 import androidx.databinding.BindingAdapter;
 

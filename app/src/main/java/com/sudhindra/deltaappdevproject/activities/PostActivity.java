@@ -30,8 +30,8 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityPostBinding;
-import com.sudhindra.deltaappdevproject.utils.Comment;
-import com.sudhindra.deltaappdevproject.utils.Post;
+import com.sudhindra.deltaappdevproject.models.Comment;
+import com.sudhindra.deltaappdevproject.models.Post;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.lang.reflect.Field;

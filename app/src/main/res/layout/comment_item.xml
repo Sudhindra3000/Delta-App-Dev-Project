@@ -9,7 +9,7 @@
 
         <variable
             name="comment"
-            type="com.sudhindra.deltaappdevproject.utils.Comment" />
+            type="com.sudhindra.deltaappdevproject.models.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

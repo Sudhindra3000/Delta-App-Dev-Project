@@ -1,12 +1,12 @@
 package com.sudhindra.deltaappdevproject.models;
 
-
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 
 import com.google.firebase.firestore.Exclude;
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 

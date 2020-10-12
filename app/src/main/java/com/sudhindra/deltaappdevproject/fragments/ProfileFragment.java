@@ -29,6 +29,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.activities.ChatActivity;
 import com.sudhindra.deltaappdevproject.activities.LoginSignUpActivity;
@@ -42,7 +43,6 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileBinding;
-import com.sudhindra.deltaappdevproject.models.GlideApp;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
 

@@ -2,6 +2,7 @@ package com.sudhindra.deltaappdevproject.models;
 
 import androidx.databinding.BindingAdapter;
 
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 

@@ -19,11 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.algolia.search.saas.Client;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewProfilePhotoBinding;
-import com.sudhindra.deltaappdevproject.models.GlideApp;
 import com.sudhindra.deltaappdevproject.models.Student;
 
 public class NewProfilePhotoActivity extends AppCompatActivity {

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
@@ -19,7 +20,6 @@ import com.sudhindra.deltaappdevproject.databinding.ReceivedMessageTextItemBindi
 import com.sudhindra.deltaappdevproject.databinding.SentMessageFileItemBinding;
 import com.sudhindra.deltaappdevproject.databinding.SentMessageImageItemBinding;
 import com.sudhindra.deltaappdevproject.databinding.SentMessageTextItemBinding;
-import com.sudhindra.deltaappdevproject.models.GlideApp;
 import com.sudhindra.deltaappdevproject.models.Message;
 
 import java.io.File;

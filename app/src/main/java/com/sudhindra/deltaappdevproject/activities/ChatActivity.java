@@ -40,6 +40,7 @@ import com.google.mlkit.nl.smartreply.SmartReplyGenerator;
 import com.google.mlkit.nl.smartreply.SmartReplySuggestion;
 import com.google.mlkit.nl.smartreply.SmartReplySuggestionResult;
 import com.google.mlkit.nl.smartreply.TextMessage;
+import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.adapters.MessageAdapter;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
@@ -48,7 +49,6 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityChatBinding;
 import com.sudhindra.deltaappdevproject.models.ChatChannel;
-import com.sudhindra.deltaappdevproject.models.GlideApp;
 import com.sudhindra.deltaappdevproject.models.Message;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 

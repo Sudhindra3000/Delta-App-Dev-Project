@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.sudhindra.deltaappdevproject.utils.TimeAgo" />
+
+        <variable
+            name="currentUid"
+            type="String" />
+
+        <variable
+            name="otherUserId"
+            type="String" />
+
+        <variable
+            name="otherUsername"
+            type="String" />
+
+        <variable
+            name="chatChannel"
+            type="com.sudhindra.deltaappdevproject.utils.ChatChannel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appBackgroundColor"
+        android:foreground="?attr/selectableItemBackground">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chatFeedProfile"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:loadChatChannelProfile="@{otherUserId}"
+            android:src="@drawable/default_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/chatFeedUsername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:gravity="top"
+            android:maxLines="1"
+            android:text="@{otherUsername}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/chatFeedProfile"
+            app:layout_constraintEnd_toStartOf="@+id/chatFeedTime"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/chatFeedProfile"
+            app:layout_constraintTop_toTopOf="@+id/chatFeedProfile"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Username" />
+
+        <TextView
+            android:setLastMessageText="@{chatChannel.lastMessage}"
+            android:id="@+id/chatFeedLastMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:gravity="bottom|left"
+            android:maxWidth="240dp"
+            android:maxLines="1"
+            android:text="Last Message"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/chatFeedProfile"
+            app:layout_constraintEnd_toEndOf="@+id/chatFeedTime"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/chatFeedUsername"
+            app:layout_constraintTop_toTopOf="@+id/chatFeedProfile"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/chatFeedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@{TimeAgo.getTimeAgo(chatChannel.lastMessage.getSentTimeInMillis())}"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/chatFeedUsername"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toEndOf="@+id/chatFeedProfile"
+            app:layout_constraintTop_toTopOf="@+id/chatFeedUsername"
+            tools:text="Time ago" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

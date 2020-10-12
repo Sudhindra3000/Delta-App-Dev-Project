@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/message_text_recogniton"
+        android:icon="@drawable/text_recognition_options_menu"
+        android:title="Text Recognition"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/message_save"
+        android:icon="@drawable/save_icon_options_menu"
+        android:title=" Save Image"
+        app:showAsAction="always" />
+</menu>

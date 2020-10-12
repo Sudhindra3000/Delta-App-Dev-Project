@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/imagePostTextRecognition"
+        android:icon="@drawable/text_recognition_popup"
+        android:title="Text Recognition" />
+    <item
+        android:id="@+id/imagePostShare"
+        android:icon="@drawable/share_icon"
+        android:title="Share"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/imagePostSave"
+        android:icon="@drawable/save_icon_popup"
+        android:title="Save Image" />
+</menu>

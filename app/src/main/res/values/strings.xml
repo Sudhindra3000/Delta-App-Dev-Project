@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">NIT-T Student Forum</string>
+    <string name="log_out_alert_title">Log out</string>
+    <string name="log_out_alert_message">Are you sure you want to Logout?</string>
+    <string name="homeFeedHelperText">Follow students to see their Posts</string>
+    <string name="messagesHelperText">Start messaging other Students</string>
+    <string name="addPostsMessage">Share posts with the Student Community</string>
+    <string name="sharePostTile">Share Post via…</string>
+    <string name="shareMessageFileTitle">Share File via…</string>
+    <string name="savePhotoRequest">To save this Photo, we need permission to access media on your device</string>
+    <string name="readExternalStorageRequest">To send media, we need permission to access photos, media and files on your device</string>
+    <string name="noResultsText">No Results found for</string>
+    <string-array name="yos_items">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="branch_items">
+        <item>Civil Engineering</item>
+        <item>Chemical Engineering</item>
+        <item>Computer Science &amp; Engineering</item>
+        <item>Electrical &amp; Electronics Engineering</item>
+        <item>Electronics &amp; Communication Engineering</item>
+        <item>Instrumentation &amp; Control Engineering</item>
+        <item>Mechanical Engineering</item>
+        <item>Metallurgical Engineering</item>
+        <item>Production Engineering</item>
+    </string-array>
+    <string-array name="messageAttachmentOptions">
+        <item>Image</item>
+        <item>File</item>
+    </string-array>
+    <string-array name="messageFileOptions">
+        <item>Delete File from Storage</item>
+        <item>Share File</item>
+    </string-array>
+    <string-array name="chatOptions">
+        <item>Delete Files in this Chat</item>
+    </string-array>
+    <string-array name="logoutOptions">
+        <item>Delete All Message Files</item>
+    </string-array>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget sit amet tellus cras adipiscing enim. Volutpat blandit aliquam etiam erat velit scelerisque in. Venenatis a condimentum vitae sapien.</string>
+</resources>

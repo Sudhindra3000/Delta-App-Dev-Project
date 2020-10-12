@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.ProfileSetupFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_setup"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/default_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Add Profile Picture"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <ProgressBar
+        android:id="@+id/profileSetupPBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
+    <!--    Todo: Add option to take Photo-->
+    <Button
+        android:id="@+id/addPhotoBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="Add a Photo"
+        android:textAllCaps="false"
+        app:cornerRadius="5dp"
+        app:rippleColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/skipBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="Skip"
+        android:textAllCaps="false"
+        app:cornerRadius="5dp"
+        app:rippleColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/changePhotoBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="Change Photo"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:cornerRadius="5dp"
+        app:rippleColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/removePhotoBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="Remove Profile"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:cornerRadius="5dp"
+        app:rippleColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/continueBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:cornerRadius="5dp"
+        app:rippleColor="@android:color/white" />
+
+</LinearLayout>

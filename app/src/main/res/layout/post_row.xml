@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.format.DateUtils" />
+
+        <variable
+            name="currentUid"
+            type="String" />
+
+        <variable
+            name="post"
+            type="com.sudhindra.deltaappdevproject.utils.Post" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appBackgroundColor"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/postProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:loadPostProfile="@{post}"
+                android:src="@drawable/default_profile" />
+
+            <TextView
+                android:id="@+id/postUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxWidth="180dp"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:text="@{post.userName}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/postTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:paddingRight="10dp"
+                android:text="@{DateUtils.getRelativeTimeSpanString(post.getPostedTimeInMillis())}"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="12sp"
+                tools:text="20min" />
+
+            <ImageView
+                android:id="@+id/postOptions"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:background="?attr/actionBarItemBackground"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/overflow_menu_icon" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/postDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:autoLink="all"
+            android:ellipsize="end"
+            android:linksClickable="true"
+            android:maxLines="15"
+            android:text="@{post.postDescription}"
+            android:textColor="@android:color/black"
+            android:textColorLink="@color/postColorLink"
+            android:textSize="18sp"
+            android:visibility="@{post.getPostDescription() != null &amp;&amp; !post.getPostDescription().trim().isEmpty() ? View.VISIBLE : View.GONE}"
+            tools:text="Post Description" />
+
+        <ImageView
+            android:id="@+id/postImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:loadPost="@{post}"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/default_post_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <com.like.LikeButton
+                android:id="@+id/postLikeBt"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="?attr/actionBarItemBackground"
+                app:anim_scale_factor="2"
+                app:circle_end_color="@color/likeRed"
+                app:circle_start_color="@color/colorAccent"
+                app:dots_primary_color="@color/likeRed"
+                app:dots_secondary_color="@color/colorAccent"
+                app:icon_size="20dp"
+                app:is_enabled="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:like_drawable="@drawable/like_on"
+                app:liked="@{post.getLikes() != null &amp;&amp; post.getLikes().contains(currentUid)}"
+                app:unlike_drawable="@drawable/like_off"
+                tools:liked="false" />
+
+            <TextView
+                android:id="@+id/postLikesTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="4dp"
+                android:text="@{String.valueOf(post.likes.size())}"
+                android:textColor="@color/iconColor"
+                android:textSize="16sp"
+                tools:text="0" />
+
+            <ImageView
+                android:id="@+id/postCommentBt"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:background="?attr/actionBarItemBackground"
+                android:padding="5dp"
+                app:srcCompat="@drawable/comment_icon" />
+
+            <TextView
+                android:id="@+id/postCommentsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="4dp"
+                android:text="@{String.valueOf(post.commentsN)}"
+                android:textColor="@color/iconColor"
+                android:textSize="16sp"
+                tools:text="0" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/dividerColor" />
+
+    </LinearLayout>
+</layout>

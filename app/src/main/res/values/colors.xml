@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#012951</color>
+    <color name="colorPrimaryDark">#011C38</color>
+    <color name="colorPrimaryLight">#0C3E70</color>
+    <color name="colorAccent">#EA6645</color>
+    <color name="appBackgroundColor">#FAFAFA</color>
+    <color name="alertRed">#FF0000</color>
+    <color name="alertRedLight">#FF2727</color>
+    <color name="hintTextColor">#AAAAAA</color>
+    <color name="gray">#707070</color>
+    <color name="likeRed">#EF253F</color>
+    <color name="dividerColor">#D2D3D7</color>
+    <color name="iconColor">#636C73</color>
+    <color name="uncheckedIconColor">#3C4043</color>
+    <color name="receivedMessageColor">#D4D5D8</color>
+    <color name="postColorLink">#039BE5</color>
+    <color name="dateHeaderColor">#919191</color>
+    <color name="sentFileColor">#082442</color>
+    <color name="receivedFileColor">#9E9E9E</color>
+</resources>

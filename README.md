@@ -18,6 +18,7 @@ For my final Project as part of the Delta Summer Mentorship Program i have built
 * Text Recognition in Image Messages and Image Posts using Google's ML Kit
 
 ## Resources
+* [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project
 * [Firebase Auth](https://firebase.google.com/docs/auth) - To Authenticate Users with Email and Password
 * [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore) - To Store Data in a flexible, scalable, NoSQL Cloud Database
 * [Firebase Cloud Storage](https://firebase.google.com/docs/storage) - A powerful, simple and cost-effective object storage service

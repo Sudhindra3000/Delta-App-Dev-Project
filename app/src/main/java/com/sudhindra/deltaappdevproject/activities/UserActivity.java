@@ -20,6 +20,9 @@ import com.sudhindra.deltaappdevproject.databinding.ActivityUserBinding;
 import com.sudhindra.deltaappdevproject.fragments.ProfileFragment;
 import com.sudhindra.deltaappdevproject.models.Student;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class UserActivity extends AppCompatActivity {
 
     private static final String TAG = "UserActivity";

@@ -59,8 +59,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_STATIC_DP;
 
+@AndroidEntryPoint
 public class ChatActivity extends AppCompatActivity {
 
     public static final String TAG = "ChatActivity", MESSAGES = "messages", CHANNEL_ID = "channelId", ENGAGED_CHAT_CHANNELS = "engagedChatChannels", CHANNEL_MODE = "channelMode";
@@ -69,6 +74,9 @@ public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
     private String otherUserId, otherUserName;
     private String currentUserName;
+
+    @Inject
+    ShareClient shareClient;
 
     private boolean receivingData;
     private Intent intent;
@@ -707,7 +715,7 @@ public class ChatActivity extends AppCompatActivity {
                             messageAdapter.notifyItemChanged(pos);
                             break;
                         case 1:
-                            ShareClient.shareMessageFile(message.getFileMIMEType(), FilesClient.getMessageFile(chatChannelFilesDir, message), this);
+                            shareClient.shareMessageFile(message.getFileMIMEType(), FilesClient.getMessageFile(chatChannelFilesDir, message));
                     }
                 })
                 .show();

@@ -17,10 +17,18 @@ import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityImageBinding;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class ImageActivity extends AppCompatActivity {
 
     private ActivityImageBinding binding;
     private long time;
+
+    @Inject
+    TextRecognitionClient textRecognitionClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +73,7 @@ public class ImageActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.message_text_recogniton:
-                TextRecognitionClient.processImage(this, binding.imageView);
+                textRecognitionClient.processImage(binding.imageView);
                 return true;
             case R.id.message_save:
                 ExternalStorageClient.checkWriteExternalStoragePermission(this, binding.imageView, String.valueOf(time), this);

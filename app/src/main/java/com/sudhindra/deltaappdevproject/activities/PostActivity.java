@@ -38,8 +38,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_STATIC_DP;
 
+@AndroidEntryPoint
 public class PostActivity extends AppCompatActivity {
 
     private static final String TAG = "PostActivity";
@@ -49,6 +54,12 @@ public class PostActivity extends AppCompatActivity {
     private ActivityPostBinding binding;
 
     private Gson gson;
+
+    @Inject
+    ShareClient shareClient;
+
+    @Inject
+    TextRecognitionClient textRecognitionClient;
 
     // User and Post Data
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -60,7 +71,6 @@ public class PostActivity extends AppCompatActivity {
     private CollectionReference postComments;
     private CollectionReference postsCollection = FirestoreClient.getInstance().getPostsCollection();
     private DocumentSnapshot lastComment = null;
-
 
     // UI
     private ArrayList<Comment> comments;
@@ -209,7 +219,7 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void processImageForText(ImageView imageView) {
-        TextRecognitionClient.processImage(this, imageView);
+        textRecognitionClient.processImage(imageView);
     }
 
     private void sharePost(ImageView imageView) {
@@ -218,7 +228,7 @@ public class PostActivity extends AppCompatActivity {
             head = "Checkout this Post by " + post.getUserName() + " in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
         else
             head = "Checkout this Post by me in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
-        ShareClient.sharePost(post, head, body, imageView, this);
+        shareClient.sharePost(post, head, body, imageView);
     }
 
     private void savePost(ImageView imageView) {

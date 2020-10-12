@@ -30,6 +30,9 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewPostBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class NewPostActivity extends AppCompatActivity {
 
     private static final String TAG = "NewPostActivity";

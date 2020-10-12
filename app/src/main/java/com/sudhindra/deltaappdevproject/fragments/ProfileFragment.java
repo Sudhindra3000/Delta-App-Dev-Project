@@ -50,6 +50,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import javax.inject.Inject;
+
 public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
@@ -58,6 +60,12 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
 
     private Gson gson = new Gson();
+
+    @Inject
+    ShareClient shareClient;
+
+    @Inject
+    TextRecognitionClient textRecognitionClient;
 
     // User Data
     private FirebaseAuth mAuth;
@@ -318,7 +326,7 @@ public class ProfileFragment extends Fragment {
 
     // Post Actions
     private void processImage(ImageView imageView) {
-        TextRecognitionClient.processImage(requireContext(), imageView);
+        textRecognitionClient.processImage(imageView);
     }
 
     private void sharePost(int pos, ImageView imageView) {
@@ -328,7 +336,7 @@ public class ProfileFragment extends Fragment {
             head = "Checkout this Post by me in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
         else
             head = "Checkout this Post by " + post.getUserName() + " in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
-        ShareClient.sharePost(post, head, body, imageView, requireContext());
+        shareClient.sharePost(post, head, body, imageView);
     }
 
     private void savePost(int pos, ImageView imageView) {

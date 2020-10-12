@@ -21,6 +21,9 @@ import com.sudhindra.deltaappdevproject.fragments.ProfileFragment;
 import com.sudhindra.deltaappdevproject.fragments.SearchFragment;
 import com.sudhindra.deltaappdevproject.models.Student;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;

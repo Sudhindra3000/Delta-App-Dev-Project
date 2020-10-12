@@ -26,6 +26,9 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewProfilePhotoBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class NewProfilePhotoActivity extends AppCompatActivity {
 
     private static final String TAG = "NewProfilePhotoActivity", APP_ID = "1GP8H9THIC", USERS_INDEX = "users";

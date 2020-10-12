@@ -22,6 +22,9 @@ import com.sudhindra.deltaappdevproject.models.Student;
 
 import java.io.File;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class NewChatActivity extends AppCompatActivity {
 
     private Intent intent;

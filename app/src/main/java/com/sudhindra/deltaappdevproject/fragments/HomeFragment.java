@@ -38,6 +38,8 @@ import com.sudhindra.deltaappdevproject.models.Student;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment {
@@ -48,6 +50,12 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private Gson gson = new Gson();
+
+    @Inject
+    ShareClient shareClient;
+
+    @Inject
+    TextRecognitionClient textRecognitionClient;
 
     // Data
     private FirebaseAuth mAuth;
@@ -209,13 +217,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void processImageForText(ImageView imageView) {
-        TextRecognitionClient.processImage(requireContext(), imageView);
+        textRecognitionClient.processImage(imageView);
     }
 
     private void sharePost(int pos, ImageView imageView) {
         Post post = posts.get(pos);
         String head = "Checkout this Post by " + post.getUserName() + " in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":", body = post.getPostDescription();
-        ShareClient.sharePost(post, head, body, imageView, requireContext());
+        shareClient.sharePost(post, head, body, imageView);
     }
 
     private void savePost(int pos, ImageView imageView) {

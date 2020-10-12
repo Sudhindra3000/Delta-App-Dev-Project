@@ -25,7 +25,6 @@ import com.sudhindra.deltaappdevproject.models.Message;
 import java.io.File;
 import java.util.ArrayList;
 
-
 public class MessageAdapter extends RecyclerView.Adapter {
 
     private static final int RIGHT_TEXT = 0, RIGHT_IMG = 2, RIGHT_FILE = 4, LEFT_TEXT = 5, LEFT_IMG = 6, LEFT_FILE = 7, PROGRESS_ITEM = 8;

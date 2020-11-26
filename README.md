@@ -31,5 +31,3 @@ For my final Project as part of the Delta Summer Mentorship Program i have built
 * [Data Binding](https://developer.android.com/topic/libraries/data-binding) - The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
 * [Material Design Components for Android](https://material.io/develop/android) - Material Components are interactive building blocks for creating a user interface
 * [Glide](https://github.com/bumptech/glide) - Used along with FirebaseUI to Load Images
-* [Apache Commons IO](https://commons.apache.org/proper/commons-io/) - A library of utilities to assist with developing IO functionality
-* [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back

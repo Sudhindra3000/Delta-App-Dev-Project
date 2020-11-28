@@ -25,7 +25,7 @@ For my final Project as part of the Delta Summer Mentorship Program i have built
 | ![Imgur](https://i.imgur.com/oe43VYo.png) | ![Imgur](https://i.imgur.com/38HpyNw.png) | ![Imgur](https://i.imgur.com/zA7RbmX.png) |
 | ![Imgur](https://i.imgur.com/DeDNssb.png) | ![Imgur](https://i.imgur.com/GMUCHQo.png) | ![Imgur](https://i.imgur.com/aokR97M.png) |
 | ![Imgur](https://i.imgur.com/PxaXDIJ.png) | ![Imgur](https://i.imgur.com/mLE2bRI.png) | ![Imgur](https://i.imgur.com/i4dgXNX.png) |
-| ![Imgur](https://i.imgur.com/dKGU5HC.png) | ![Imgur](https://i.imgur.com/IVQop91.png) |
+| ![Imgur](https://i.imgur.com/dKGU5HC.png) | ![Imgur](https://i.imgur.com/HCPKhBh.png) |
 
 ## Resources
 * [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project

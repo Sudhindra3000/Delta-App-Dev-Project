@@ -46,10 +46,10 @@ import com.sudhindra.deltaappdevproject.adapters.MessageAdapter;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityChatBinding;
 import com.sudhindra.deltaappdevproject.models.ChatChannel;
 import com.sudhindra.deltaappdevproject.models.Message;
+import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.io.File;
@@ -72,8 +72,6 @@ public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
     private String otherUserId, otherUserName;
     private String currentUserName;
-
-    private ShareClient shareClient;
 
     private boolean receivingData;
     private Intent intent;
@@ -141,8 +139,6 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
-
-        shareClient = new ShareClient(this);
 
         progressDialog = new ProgressDialog(this, R.style.AppTheme_ProgressDialogTheme);
         progressDialog.setMessage("Loading File...");
@@ -714,10 +710,9 @@ public class ChatActivity extends AppCompatActivity {
                             messageAdapter.notifyItemChanged(pos);
                             break;
                         case 1:
-                            shareClient.shareMessageFile(message.getFileMIMEType(), FilesClient.getMessageFile(chatChannelFilesDir, message));
+                            ShareUtil.shareMessageFile(this, message.getFileMIMEType(), FilesClient.getMessageFile(chatChannelFilesDir, message));
                     }
-                })
-                .show();
+                }).show();
     }
 
     // Smart Replies

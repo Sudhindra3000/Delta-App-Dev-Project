@@ -27,11 +27,11 @@ import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.adapters.CommentAdapter;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityPostBinding;
 import com.sudhindra.deltaappdevproject.models.Comment;
 import com.sudhindra.deltaappdevproject.models.Post;
+import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.lang.reflect.Field;
@@ -52,8 +52,6 @@ public class PostActivity extends AppCompatActivity {
     private ActivityPostBinding binding;
 
     private Gson gson;
-
-    private ShareClient shareClient;
 
     private TextRecognitionClient textRecognitionClient;
 
@@ -85,7 +83,6 @@ public class PostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 
-        shareClient = new ShareClient(this);
         textRecognitionClient = new TextRecognitionClient(this);
 
         binding.postToolbar.setOnClickListener(v -> binding.postScrollView.fullScroll(NestedScrollView.FOCUS_UP));
@@ -227,7 +224,7 @@ public class PostActivity extends AppCompatActivity {
             head = "Checkout this Post by " + post.getUserName() + " in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
         else
             head = "Checkout this Post by me in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
-        shareClient.sharePost(post, head, body, imageView);
+        ShareUtil.sharePost(this, post, head, body, imageView);
     }
 
     private void savePost(ImageView imageView) {

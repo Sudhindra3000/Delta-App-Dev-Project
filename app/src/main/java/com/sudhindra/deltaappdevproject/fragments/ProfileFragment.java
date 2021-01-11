@@ -40,11 +40,11 @@ import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.clients.ShareClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -58,8 +58,6 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
 
     private Gson gson = new Gson();
-
-    private ShareClient shareClient;
 
     private TextRecognitionClient textRecognitionClient;
 
@@ -180,7 +178,6 @@ public class ProfileFragment extends Fragment {
             });
         }
 
-        shareClient = new ShareClient(requireContext());
         textRecognitionClient = new TextRecognitionClient(requireContext());
     }
 
@@ -335,7 +332,7 @@ public class ProfileFragment extends Fragment {
             head = "Checkout this Post by me in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
         else
             head = "Checkout this Post by " + post.getUserName() + " in " + getResources().getString(R.string.app_name) + " on " + post.getPostDate() + ":";
-        shareClient.sharePost(post, head, body, imageView);
+        ShareUtil.sharePost(this, post, head, body, imageView);
     }
 
     private void savePost(int pos, ImageView imageView) {

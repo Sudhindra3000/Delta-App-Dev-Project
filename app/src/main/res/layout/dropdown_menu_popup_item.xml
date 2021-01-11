@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:textColor="@color/colorPrimary"
-    android:padding="16dp"
     android:ellipsize="end"
+    android:foreground="?attr/selectableItemBackground"
     android:maxLines="1"
-    android:textAppearance="?attr/textAppearanceSubtitle1" />
+    android:padding="16dp"
+    android:textAppearance="?attr/textAppearanceSubtitle1"
+    android:textColor="@color/colorPrimary" />

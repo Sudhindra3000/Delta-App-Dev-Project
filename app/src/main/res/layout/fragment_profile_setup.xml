@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:orientation="vertical"
     tools:context=".fragments.ProfileSetupFragment">
 
@@ -42,72 +43,57 @@
     <!--    Todo: Add option to take Photo-->
     <Button
         android:id="@+id/addPhotoBt"
+        style="@style/AppTheme.ThinButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:text="Add a Photo"
-        android:textAllCaps="false"
-        app:cornerRadius="5dp"
-        app:rippleColor="@android:color/white" />
+        android:text="Add a Photo" />
 
     <Button
         android:id="@+id/skipBt"
+        style="@style/AppTheme.ThinButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/colorPrimaryLight"
-        android:text="Skip"
-        android:textAllCaps="false"
-        app:cornerRadius="5dp"
-        app:rippleColor="@android:color/white" />
+        android:text="Skip" />
 
     <Button
         android:id="@+id/changePhotoBt"
+        style="@style/AppTheme.ThinButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/colorPrimaryLight"
         android:text="Change Photo"
-        android:textAllCaps="false"
-        android:visibility="invisible"
-        app:cornerRadius="5dp"
-        app:rippleColor="@android:color/white" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/removePhotoBt"
+        style="@style/AppTheme.ThinButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/colorPrimaryLight"
         android:text="Remove Profile"
-        android:textAllCaps="false"
-        android:visibility="invisible"
-        app:cornerRadius="5dp"
-        app:rippleColor="@android:color/white" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/continueBt"
+        style="@style/AppTheme.ThinButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/colorPrimaryLight"
         android:text="Continue"
-        android:textAllCaps="false"
-        android:visibility="invisible"
-        app:cornerRadius="5dp"
-        app:rippleColor="@android:color/white" />
+        android:visibility="invisible" />
 
 </LinearLayout>

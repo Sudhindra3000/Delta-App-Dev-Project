@@ -190,66 +190,54 @@
 
                 <Button
                     android:id="@+id/logOutBt"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/AppTheme.Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
-                    android:backgroundTint="@android:color/white"
                     android:text="Log Out"
-                    android:textAllCaps="false"
                     android:textColor="#FF0000"
                     app:rippleColor="@color/alertRedLight"
-                    app:strokeColor="@color/alertRed"
-                    app:strokeWidth="2dp" />
+                    app:strokeColor="@color/alertRed" />
 
                 <Button
                     android:id="@+id/followBt"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/AppTheme.Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:text="Follow"
-                    android:textAllCaps="false"
                     android:textColor="@color/colorPrimaryLight"
                     android:visibility="gone"
                     app:rippleColor="@color/colorPrimaryLight"
-                    app:strokeColor="@color/colorPrimaryLight"
-                    app:strokeWidth="2dp" />
+                    app:strokeColor="@color/colorPrimaryLight" />
 
                 <Button
                     android:id="@+id/followingBt"
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                    style="@style/AppTheme.Button.Unelevated"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
-                    android:backgroundTint="@color/colorPrimaryLight"
                     android:text="Following"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:visibility="gone"
-                    app:rippleColor="@android:color/white" />
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/messageBt"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/AppTheme.Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:backgroundTint="@android:color/white"
                     android:text="Message"
-                    android:textAllCaps="false"
                     android:textColor="@color/colorPrimaryLight"
                     android:visibility="gone"
                     app:rippleColor="@color/colorPrimaryLight"
-                    app:strokeColor="@color/colorPrimaryLight"
-                    app:strokeWidth="2dp" />
+                    app:strokeColor="@color/colorPrimaryLight" />
 
                 <TextView
                     android:id="@+id/textView3"

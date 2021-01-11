@@ -50,8 +50,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.inject.Inject;
-
 public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
@@ -63,8 +61,7 @@ public class ProfileFragment extends Fragment {
 
     private ShareClient shareClient;
 
-    @Inject
-    TextRecognitionClient textRecognitionClient;
+    private TextRecognitionClient textRecognitionClient;
 
     // User Data
     private FirebaseAuth mAuth;
@@ -184,6 +181,7 @@ public class ProfileFragment extends Fragment {
         }
 
         shareClient = new ShareClient(requireContext());
+        textRecognitionClient = new TextRecognitionClient(requireContext());
     }
 
     @Override

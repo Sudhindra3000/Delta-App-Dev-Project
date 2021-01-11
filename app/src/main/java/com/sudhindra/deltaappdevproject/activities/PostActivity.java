@@ -38,8 +38,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_STATIC_DP;
@@ -57,8 +55,7 @@ public class PostActivity extends AppCompatActivity {
 
     private ShareClient shareClient;
 
-    @Inject
-    TextRecognitionClient textRecognitionClient;
+    private TextRecognitionClient textRecognitionClient;
 
     // User and Post Data
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -88,8 +85,8 @@ public class PostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 
-
         shareClient = new ShareClient(this);
+        textRecognitionClient = new TextRecognitionClient(this);
 
         binding.postToolbar.setOnClickListener(v -> binding.postScrollView.fullScroll(NestedScrollView.FOCUS_UP));
 

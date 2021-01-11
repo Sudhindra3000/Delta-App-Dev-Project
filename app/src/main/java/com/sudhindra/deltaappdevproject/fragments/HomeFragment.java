@@ -38,8 +38,6 @@ import com.sudhindra.deltaappdevproject.models.Student;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import javax.inject.Inject;
-
 import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment {
@@ -53,8 +51,7 @@ public class HomeFragment extends Fragment {
 
     private ShareClient shareClient;
 
-    @Inject
-    TextRecognitionClient textRecognitionClient;
+    private TextRecognitionClient textRecognitionClient;
 
     // Data
     private FirebaseAuth mAuth;
@@ -148,6 +145,7 @@ public class HomeFragment extends Fragment {
         }));
 
         shareClient = new ShareClient(requireContext());
+        textRecognitionClient = new TextRecognitionClient(requireContext());
     }
 
     @Override

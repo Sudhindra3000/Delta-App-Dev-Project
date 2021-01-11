@@ -17,8 +17,6 @@ import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityImageBinding;
 
-import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -27,8 +25,7 @@ public class ImageActivity extends AppCompatActivity {
     private ActivityImageBinding binding;
     private long time;
 
-    @Inject
-    TextRecognitionClient textRecognitionClient;
+    private TextRecognitionClient textRecognitionClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +36,8 @@ public class ImageActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        textRecognitionClient = new TextRecognitionClient(this);
 
         binding.imageToolbar.getBackground().setDither(true);
 

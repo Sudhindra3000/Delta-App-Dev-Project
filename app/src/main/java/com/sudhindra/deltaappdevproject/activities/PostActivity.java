@@ -55,8 +55,7 @@ public class PostActivity extends AppCompatActivity {
 
     private Gson gson;
 
-    @Inject
-    ShareClient shareClient;
+    private ShareClient shareClient;
 
     @Inject
     TextRecognitionClient textRecognitionClient;
@@ -88,6 +87,9 @@ public class PostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+
+
+        shareClient = new ShareClient(this);
 
         binding.postToolbar.setOnClickListener(v -> binding.postScrollView.fullScroll(NestedScrollView.FOCUS_UP));
 

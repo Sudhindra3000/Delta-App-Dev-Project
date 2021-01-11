@@ -61,8 +61,7 @@ public class ProfileFragment extends Fragment {
 
     private Gson gson = new Gson();
 
-    @Inject
-    ShareClient shareClient;
+    private ShareClient shareClient;
 
     @Inject
     TextRecognitionClient textRecognitionClient;
@@ -183,6 +182,8 @@ public class ProfileFragment extends Fragment {
                 }
             });
         }
+
+        shareClient = new ShareClient(requireContext());
     }
 
     @Override

@@ -51,8 +51,7 @@ public class HomeFragment extends Fragment {
 
     private Gson gson = new Gson();
 
-    @Inject
-    ShareClient shareClient;
+    private ShareClient shareClient;
 
     @Inject
     TextRecognitionClient textRecognitionClient;
@@ -147,6 +146,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         }));
+
+        shareClient = new ShareClient(requireContext());
     }
 
     @Override

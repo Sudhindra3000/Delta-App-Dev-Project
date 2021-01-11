@@ -59,8 +59,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_STATIC_DP;
@@ -75,8 +73,7 @@ public class ChatActivity extends AppCompatActivity {
     private String otherUserId, otherUserName;
     private String currentUserName;
 
-    @Inject
-    ShareClient shareClient;
+    private ShareClient shareClient;
 
     private boolean receivingData;
     private Intent intent;
@@ -144,6 +141,8 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+
+        shareClient = new ShareClient(this);
 
         progressDialog = new ProgressDialog(this, R.style.AppTheme_ProgressDialogTheme);
         progressDialog.setMessage("Loading File...");

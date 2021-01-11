@@ -28,7 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.activities.ChatActivity;
@@ -43,6 +42,7 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 
@@ -56,8 +56,6 @@ public class ProfileFragment extends Fragment {
     public static final int CURRENT_USER_MODE = 789, OTHER_USER_MODE = 901;
     private int mode, postLimit = 5;
     private FragmentProfileBinding binding;
-
-    private Gson gson = new Gson();
 
     // User Data
     private FirebaseAuth mAuth;
@@ -279,7 +277,7 @@ public class ProfileFragment extends Fragment {
 
     private void showNewProfileScreen() {
         Intent intent = new Intent(requireContext(), NewProfilePhotoActivity.class);
-        intent.putExtra("student", gson.toJson(student));
+        intent.putExtra("student", GsonUtil.toJson(student));
         startActivity(intent);
     }
 
@@ -370,7 +368,7 @@ public class ProfileFragment extends Fragment {
     private void showCommentsSection(int pos) {
         Intent intent = new Intent(requireContext(), PostActivity.class);
         intent.putExtra("pos", pos);
-        intent.putExtra("postJson", gson.toJson(posts.get(pos)));
+        intent.putExtra("postJson", GsonUtil.toJson(posts.get(pos)));
         intent.putExtra("currentUserName", currentUserName);
         startActivityForResult(intent, PostActivity.POST_ACTIVITY_REQUEST);
     }
@@ -613,7 +611,7 @@ public class ProfileFragment extends Fragment {
         if (requestCode == PostActivity.POST_ACTIVITY_REQUEST && data != null) {
             if (resultCode == PostActivity.POST_CHANGED) {
                 int pos = data.getIntExtra("pos", 0);
-                Post changedPost = gson.fromJson(data.getStringExtra("changedPost"), Post.class);
+                Post changedPost = GsonUtil.fromJson(data.getStringExtra("changedPost"), Post.class);
                 posts.set(pos, changedPost);
                 postAdapter.notifyItemChanged(pos);
             }

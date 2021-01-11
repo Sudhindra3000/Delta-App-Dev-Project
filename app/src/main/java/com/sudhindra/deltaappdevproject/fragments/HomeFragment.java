@@ -21,7 +21,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.activities.NewPostActivity;
 import com.sudhindra.deltaappdevproject.activities.PostActivity;
@@ -32,6 +31,7 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentHomeBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 
@@ -46,8 +46,6 @@ public class HomeFragment extends Fragment {
     public static final int NEW_POST_REQUEST = 567;
     private int homeFeedLimit = 5;
     private FragmentHomeBinding binding;
-
-    private Gson gson = new Gson();
 
     // Data
     private FirebaseAuth mAuth;
@@ -257,7 +255,7 @@ public class HomeFragment extends Fragment {
     private void showCommentsSections(int pos) {
         Intent intent = new Intent(requireContext(), PostActivity.class);
         intent.putExtra("pos", pos);
-        intent.putExtra("postJson", gson.toJson(posts.get(pos)));
+        intent.putExtra("postJson", GsonUtil.toJson(posts.get(pos)));
         intent.putExtra("currentUserName", student.getFullName());
         intent.putExtra("hasProfilePic", student.getHasProfilePic());
         startActivityForResult(intent, PostActivity.POST_ACTIVITY_REQUEST);
@@ -359,13 +357,13 @@ public class HomeFragment extends Fragment {
         if (requestCode == NEW_POST_REQUEST) {
             if (resultCode == RESULT_OK) {
                 assert data != null;
-                listener.onNewPost(gson.fromJson(data.getStringExtra("newPostJson"), Post.class));
+                listener.onNewPost(GsonUtil.fromJson(data.getStringExtra("newPostJson"), Post.class));
             }
         }
         if (requestCode == PostActivity.POST_ACTIVITY_REQUEST && data != null) {
             if (resultCode == PostActivity.POST_CHANGED) {
                 int pos = data.getIntExtra("pos", 0);
-                Post changedPost = gson.fromJson(data.getStringExtra("changedPost"), Post.class);
+                Post changedPost = GsonUtil.fromJson(data.getStringExtra("changedPost"), Post.class);
                 posts.set(pos, changedPost);
                 postAdapter.notifyItemChanged(pos);
             }

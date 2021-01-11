@@ -20,7 +20,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.Query;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.activities.ChatActivity;
 import com.sudhindra.deltaappdevproject.activities.NewChatActivity;
@@ -31,6 +30,7 @@ import com.sudhindra.deltaappdevproject.databinding.FragmentMessagesBinding;
 import com.sudhindra.deltaappdevproject.models.ChatChannel;
 import com.sudhindra.deltaappdevproject.models.Message;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -355,7 +355,7 @@ public class MessagesFragment extends Fragment {
 
     private void showNewChatScreen() {
         Intent intent = new Intent(requireContext(), NewChatActivity.class);
-        intent.putExtra("student", new Gson().toJson(student));
+        intent.putExtra("student", GsonUtil.toJson(student));
         startActivity(intent);
     }
 

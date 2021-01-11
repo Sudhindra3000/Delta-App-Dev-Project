@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.WriteBatch;
-import com.google.gson.Gson;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.sudhindra.deltaappdevproject.R;
@@ -30,6 +29,7 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityPostBinding;
 import com.sudhindra.deltaappdevproject.models.Comment;
 import com.sudhindra.deltaappdevproject.models.Post;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 import com.sudhindra.deltaappdevproject.utils.ShareUtil;
 import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -50,8 +50,6 @@ public class PostActivity extends AppCompatActivity {
     public static final int POST_CHANGED = 890, POST_UNCHANGED = 789;
     private final int COMMENTS_LIMIT = 10;
     private ActivityPostBinding binding;
-
-    private Gson gson;
 
     // User and Post Data
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -84,9 +82,8 @@ public class PostActivity extends AppCompatActivity {
         binding.postToolbar.setOnClickListener(v -> binding.postScrollView.fullScroll(NestedScrollView.FOCUS_UP));
 
         Intent intent = getIntent();
-        gson = new Gson();
         pos = intent.getIntExtra("pos", -1);
-        post = gson.fromJson(intent.getStringExtra("postJson"), Post.class);
+        post = GsonUtil.fromJson(intent.getStringExtra("postJson"), Post.class);
         postComments = FirestoreClient.getInstance().getCommentsForPost(post.getPostedTimeInMillis());
         if (post.getLikes() != null)
             likesNum = post.getLikes().size();
@@ -351,7 +348,7 @@ public class PostActivity extends AppCompatActivity {
         if (post.getLikes() != null && likesNum != post.getLikes().size() || commentNum != post.getCommentsN()) {
             Intent intent = new Intent();
             intent.putExtra("pos", pos);
-            intent.putExtra("changedPost", gson.toJson(post));
+            intent.putExtra("changedPost", GsonUtil.toJson(post));
             setResult(POST_CHANGED, intent);
         } else
             setResult(POST_UNCHANGED);

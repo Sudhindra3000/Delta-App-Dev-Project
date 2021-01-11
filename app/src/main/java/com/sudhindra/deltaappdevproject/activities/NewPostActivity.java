@@ -22,13 +22,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewPostBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -156,7 +156,7 @@ public class NewPostActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Post Uploaded", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
-                    intent.putExtra("newPostJson", new Gson().toJson(post));
+                    intent.putExtra("newPostJson", GsonUtil.toJson(post));
                     setResult(RESULT_OK, intent);
                     onBackPressed();
                 })

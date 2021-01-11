@@ -21,11 +21,11 @@ import com.algolia.search.saas.Index;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentSignUpScreenBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 import com.sudhindra.deltaappdevproject.viewmodels.SignUpViewModel;
 
 import org.json.JSONException;
@@ -175,7 +175,7 @@ public class SignUpScreen extends Fragment {
     }
 
     private void storeUserIndex() throws JSONException {
-        usersIndex.addObjectAsync(new JSONObject(new Gson().toJson(newStudent)), newUid, ((jsonObject, e) -> {
+        usersIndex.addObjectAsync(new JSONObject(GsonUtil.toJson(newStudent)), newUid, ((jsonObject, e) -> {
             if (e != null) {
                 Log.i(TAG, "storeUserIndex: " + e.getMessage());
                 Toast.makeText(requireContext(), "Failed to Sign up. Try again Later", Toast.LENGTH_SHORT).show();

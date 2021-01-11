@@ -13,12 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewChatBinding;
 import com.sudhindra.deltaappdevproject.fragments.SearchFragment;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 
 import java.io.File;
 
@@ -57,7 +57,7 @@ public class NewChatActivity extends AppCompatActivity {
             } else
                 handleWhenNoCurrentUser();
         } else {
-            Student student = new Gson().fromJson(intent.getStringExtra("student"), Student.class);
+            Student student = GsonUtil.fromJson(intent.getStringExtra("student"), Student.class);
             searchFragment = new SearchFragment(SearchFragment.NEW_CHAT_MODE, student);
         }
 

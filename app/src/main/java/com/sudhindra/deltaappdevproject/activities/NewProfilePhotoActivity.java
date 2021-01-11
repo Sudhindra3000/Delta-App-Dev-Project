@@ -18,13 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.algolia.search.saas.Client;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.Gson;
 import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityNewProfilePhotoBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
+import com.sudhindra.deltaappdevproject.utils.GsonUtil;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -52,7 +52,7 @@ public class NewProfilePhotoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 
-        student = new Gson().fromJson(getIntent().getStringExtra("student"), Student.class);
+        student = GsonUtil.fromJson(getIntent().getStringExtra("student"), Student.class);
         mAuth = FirebaseAuth.getInstance();
 
         FirestoreClient.getInstance().getAlgoliaAPIKeys().get()

@@ -40,11 +40,11 @@ import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FilesClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.utils.ShareUtil;
+import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -58,8 +58,6 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
 
     private Gson gson = new Gson();
-
-    private TextRecognitionClient textRecognitionClient;
 
     // User Data
     private FirebaseAuth mAuth;
@@ -177,8 +175,6 @@ public class ProfileFragment extends Fragment {
                 }
             });
         }
-
-        textRecognitionClient = new TextRecognitionClient(requireContext());
     }
 
     @Override
@@ -322,7 +318,7 @@ public class ProfileFragment extends Fragment {
 
     // Post Actions
     private void processImage(ImageView imageView) {
-        textRecognitionClient.processImage(imageView);
+        TextRecognitionUtil.processImage(this, imageView);
     }
 
     private void sharePost(int pos, ImageView imageView) {

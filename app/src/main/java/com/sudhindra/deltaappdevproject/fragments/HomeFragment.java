@@ -29,11 +29,11 @@ import com.sudhindra.deltaappdevproject.activities.UserActivity;
 import com.sudhindra.deltaappdevproject.adapters.PostAdapter;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
-import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentHomeBinding;
 import com.sudhindra.deltaappdevproject.models.Post;
 import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.utils.ShareUtil;
+import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,8 +48,6 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private Gson gson = new Gson();
-
-    private TextRecognitionClient textRecognitionClient;
 
     // Data
     private FirebaseAuth mAuth;
@@ -141,8 +139,6 @@ public class HomeFragment extends Fragment {
                 }
             }
         }));
-
-        textRecognitionClient = new TextRecognitionClient(requireContext());
     }
 
     @Override
@@ -213,7 +209,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void processImageForText(ImageView imageView) {
-        textRecognitionClient.processImage(imageView);
+        TextRecognitionUtil.processImage(this, imageView);
     }
 
     private void sharePost(int pos, ImageView imageView) {

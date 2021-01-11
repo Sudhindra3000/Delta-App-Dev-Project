@@ -14,8 +14,8 @@ import com.sudhindra.deltaappdevproject.GlideApp;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.ExternalStorageClient;
-import com.sudhindra.deltaappdevproject.clients.TextRecognitionClient;
 import com.sudhindra.deltaappdevproject.databinding.ActivityImageBinding;
+import com.sudhindra.deltaappdevproject.utils.TextRecognitionUtil;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -24,8 +24,6 @@ public class ImageActivity extends AppCompatActivity {
 
     private ActivityImageBinding binding;
     private long time;
-
-    private TextRecognitionClient textRecognitionClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +34,6 @@ public class ImageActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        textRecognitionClient = new TextRecognitionClient(this);
 
         binding.imageToolbar.getBackground().setDither(true);
 
@@ -72,7 +68,7 @@ public class ImageActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.message_text_recogniton:
-                textRecognitionClient.processImage(binding.imageView);
+                TextRecognitionUtil.processImage(this, binding.imageView);
                 return true;
             case R.id.message_save:
                 ExternalStorageClient.checkWriteExternalStoragePermission(this, binding.imageView, String.valueOf(time), this);

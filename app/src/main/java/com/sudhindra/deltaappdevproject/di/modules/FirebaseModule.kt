@@ -1,6 +1,7 @@
 package com.sudhindra.deltaappdevproject.di.modules
 
 import com.google.firebase.auth.FirebaseAuth
+import com.sudhindra.deltaappdevproject.services.MyFirebaseMessagingService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +14,9 @@ object FirebaseModule {
 
     @Provides
     @Singleton
-    fun getFirebaseAuth() = FirebaseAuth.getInstance()
+    fun getFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
+
+    @Provides
+    @Singleton
+    fun getMessagingService(): MyFirebaseMessagingService = MyFirebaseMessagingService()
 }

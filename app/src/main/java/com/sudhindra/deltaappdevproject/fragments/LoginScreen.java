@@ -21,8 +21,8 @@ import com.sudhindra.deltaappdevproject.activities.HomeActivity;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentLoginScreenBinding;
 import com.sudhindra.deltaappdevproject.utils.ToastUtil;
-import com.sudhindra.deltaappdevproject.viewmodels.CoreViewModel;
-import com.sudhindra.deltaappdevproject.viewmodels.actions.CoreAction;
+import com.sudhindra.deltaappdevproject.viewmodels.AuthViewModel;
+import com.sudhindra.deltaappdevproject.viewmodels.actions.AuthAction;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -31,7 +31,7 @@ public class LoginScreen extends Fragment {
 
     private FragmentLoginScreenBinding binding;
 
-    private CoreViewModel viewModel;
+    private AuthViewModel viewModel;
 
     private String email, password;
     private NavController navController;
@@ -57,7 +57,7 @@ public class LoginScreen extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(this).get(CoreViewModel.class);
+        viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
         initObservers();
 
         navController = Navigation.findNavController(view);
@@ -68,7 +68,7 @@ public class LoginScreen extends Fragment {
             if (!email.trim().isEmpty() && !password.trim().isEmpty()) {
                 binding.loginBt.setVisibility(View.INVISIBLE);
                 binding.loginPb.setVisibility(View.VISIBLE);
-                viewModel.doAction(new CoreAction.SigIn(email, password));
+                viewModel.doAction(new AuthAction.SigIn(email, password));
             } else {
                 if (email.trim().isEmpty() && password.trim().isEmpty())
                     Toast.makeText(requireContext(), "Enter Email and Password", Toast.LENGTH_SHORT).show();

@@ -18,15 +18,14 @@ import androidx.navigation.Navigation;
 
 import com.algolia.search.saas.Client;
 import com.algolia.search.saas.Index;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentSignUpScreenBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.utils.GsonUtil;
-import com.sudhindra.deltaappdevproject.viewmodels.CoreViewModel;
+import com.sudhindra.deltaappdevproject.utils.ToastUtil;
+import com.sudhindra.deltaappdevproject.viewmodels.AuthViewModel;
+import com.sudhindra.deltaappdevproject.viewmodels.actions.AuthAction;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import kotlin.Unit;
 
 @AndroidEntryPoint
 public class SignUpScreen extends Fragment {
@@ -43,14 +43,11 @@ public class SignUpScreen extends Fragment {
 
     private FragmentSignUpScreenBinding binding;
 
-    private CoreViewModel viewModel;
+    private AuthViewModel viewModel;
 
     private NavController navController;
 
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
-
-    private String fName, lName, email, password, confirmPassword, yos, newUid;
+    private String fName, lName, email, password, confirmPassword, yos;
     private int branch;
     private Student newStudent;
     private ArrayList<String> branchStrings = new ArrayList<>();
@@ -62,8 +59,6 @@ public class SignUpScreen extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
         requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -71,16 +66,6 @@ public class SignUpScreen extends Fragment {
             }
         });
         branchStrings.addAll(Arrays.asList(getResources().getStringArray(R.array.branch_items)));
-        FirestoreClient.getInstance().getAlgoliaAPIKeys().get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    algoliaAdminAPIKey = (String) documentSnapshot.get(FirestoreClient.ALGOLIA_ADMIN_API_KEY);
-                    client = new Client(APP_ID, algoliaAdminAPIKey);
-                    usersIndex = client.getIndex(USERS_INDEX);
-                })
-                .addOnFailureListener(e -> {
-                    Log.i(TAG, "onCreate: " + e.getMessage());
-                    Toast.makeText(requireContext(), "There was an issue. Try again Later", Toast.LENGTH_SHORT).show();
-                });
     }
 
     @Override
@@ -93,7 +78,9 @@ public class SignUpScreen extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(CoreViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
+        viewModel.doAction(new AuthAction.GetAlgoliaAPIKeys(Unit.INSTANCE));
+        initObservers();
 
         navController = Navigation.findNavController(view);
 
@@ -103,6 +90,22 @@ public class SignUpScreen extends Fragment {
         binding.branchDropdown.setAdapter(branchAdapter);
 
         binding.signupBt.setOnClickListener(v -> checkDetails());
+    }
+
+    private void initObservers() {
+        viewModel.getAPIKeySuccess().observe(getViewLifecycleOwner(), documentSnapshot -> {
+            algoliaAdminAPIKey = (String) documentSnapshot.get(FirestoreClient.ALGOLIA_ADMIN_API_KEY);
+            client = new Client(APP_ID, algoliaAdminAPIKey);
+            usersIndex = client.getIndex(USERS_INDEX);
+        });
+
+        viewModel.getSignUpSuccess().observe(getViewLifecycleOwner(), authResult -> storeUserIndex(authResult.getUser().getUid()));
+
+        viewModel.getError().observe(getViewLifecycleOwner(), s -> {
+            binding.singUpProgressBar.setVisibility(View.GONE);
+            binding.signupBt.setVisibility(View.VISIBLE);
+            ToastUtil.toast(this, s);
+        });
     }
 
     private void checkDetails() {
@@ -138,60 +141,25 @@ public class SignUpScreen extends Fragment {
         binding.signupBt.setVisibility(View.GONE);
         newStudent = new Student(fName, lName, Integer.parseInt(yos), branch, false, new ArrayList<>());
         viewModel.setStudent(newStudent);
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-                    Log.i(TAG, "signUpUser,onSuccess: ");
-                    newUid = authResult.getUser().getUid();
-                    storeUserInfo();
-                })
-                .addOnFailureListener(e -> {
-                    binding.singUpProgressBar.setVisibility(View.GONE);
-                    binding.signupBt.setVisibility(View.VISIBLE);
-                    Log.i(TAG, "signUpUser,onFailure: " + e.getMessage());
-                    if (e.getMessage().equals("The given password is invalid. [ Password should be at least 6 characters ]")) {
-                        binding.passwordField.setError("Password should be at least 6 characters");
-                    } else if (e.getMessage().equals("The email address is already in use by another account.")) {
-                        binding.emailField.setError("The email address is already in use by another account");
-                    } else
-                        Toast.makeText(requireContext(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
-                });
+        viewModel.doAction(new AuthAction.SigUp(email, password, newStudent));
     }
 
-    private void storeUserInfo() {
-        db.collection("users")
-                .document(newUid)
-                .set(newStudent)
-                .addOnSuccessListener(aVoid -> {
-                    Log.i(TAG, "storeUserInfo,onSuccess: ");
-                    try {
-                        FirebaseInstanceId.getInstance().getInstanceId()
-                                .addOnSuccessListener(instanceIdResult -> FirestoreClient.getInstance().addDeviceTokenToUser(instanceIdResult.getToken()))
-                                .addOnFailureListener(ex -> Log.i(TAG, "showHomeScreen: " + ex.getMessage()));
-                        storeUserIndex();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Log.i(TAG, "storeUserInfo,onFailure: " + e.getMessage());
-                    binding.singUpProgressBar.setVisibility(View.GONE);
-                    binding.signupBt.setVisibility(View.VISIBLE);
-                    Toast.makeText(requireContext(), "Sign Up Failed", Toast.LENGTH_SHORT).show();
-                });
-    }
-
-    private void storeUserIndex() throws JSONException {
-        usersIndex.addObjectAsync(new JSONObject(GsonUtil.toJson(newStudent)), newUid, ((jsonObject, e) -> {
-            if (e != null) {
-                Log.i(TAG, "storeUserIndex: " + e.getMessage());
-                Toast.makeText(requireContext(), "Failed to Sign up. Try again Later", Toast.LENGTH_SHORT).show();
-            }
-            if (jsonObject != null) {
-                Log.i(TAG, "storeUserIndex: " + jsonObject.toString());
-                Toast.makeText(requireContext(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                navController.navigate(R.id.show_profile_setup);
-            }
-        }));
+    private void storeUserIndex(String newUid) {
+        try {
+            usersIndex.addObjectAsync(new JSONObject(GsonUtil.toJson(newStudent)), newUid, ((jsonObject, e) -> {
+                if (e != null) {
+                    Log.i(TAG, "storeUserIndex: " + e.getMessage());
+                    Toast.makeText(requireContext(), "Failed to Sign up. Try again Later", Toast.LENGTH_SHORT).show();
+                }
+                if (jsonObject != null) {
+                    Log.i(TAG, "storeUserIndex: " + jsonObject.toString());
+                    Toast.makeText(requireContext(), "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                    navController.navigate(R.id.show_profile_setup);
+                }
+            }));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

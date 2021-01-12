@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -21,14 +20,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.sudhindra.deltaappdevproject.R;
 import com.sudhindra.deltaappdevproject.activities.HomeActivity;
-import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
-import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileSetupBinding;
-import com.sudhindra.deltaappdevproject.models.Student;
-import com.sudhindra.deltaappdevproject.viewmodels.CoreViewModel;
+import com.sudhindra.deltaappdevproject.utils.ToastUtil;
+import com.sudhindra.deltaappdevproject.viewmodels.AuthViewModel;
+import com.sudhindra.deltaappdevproject.viewmodels.actions.AuthAction;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -37,16 +34,18 @@ public class ProfileSetupFragment extends Fragment {
 
     private static final String TAG = "ProfileSetupFragment";
     private final int IMAGE_REQUEST = 23;
+
     private FragmentProfileSetupBinding binding;
+
+    private AuthViewModel viewModel;
+
     private NavController navController;
 
-    private FirebaseAuth mAuth;
     private Uri imageUri;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
         requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -66,9 +65,12 @@ public class ProfileSetupFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
+        initObservers();
+
         navController = Navigation.findNavController(view);
 
-        CoreViewModel viewModel = new ViewModelProvider(requireActivity()).get(CoreViewModel.class);
+        AuthViewModel viewModel = new ViewModelProvider(requireActivity()).get(AuthViewModel.class);
         Log.i(TAG, "onViewCreated: " + viewModel.getStudent().toString());
 
         binding.addPhotoBt.setOnClickListener(v -> checkForPermission());
@@ -90,28 +92,19 @@ public class ProfileSetupFragment extends Fragment {
         binding.continueBt.setOnClickListener(v -> uploadProfile());
     }
 
+    private void initObservers() {
+        viewModel.getProfileUploadSuccess().observe(getViewLifecycleOwner(), unit -> showHomeFeed());
+
+        viewModel.getError().observe(getViewLifecycleOwner(), s -> ToastUtil.toast(this, s));
+    }
+
     private void uploadProfile() {
         binding.profileSetupPBar.setVisibility(View.VISIBLE);
         binding.changePhotoBt.setVisibility(View.GONE);
         binding.removePhotoBt.setVisibility(View.GONE);
         binding.continueBt.setVisibility(View.GONE);
-        if (imageUri != null) {
-            CloudStorageClient.getInstance().getProfileImgRef(mAuth.getUid())
-                    .putFile(imageUri)
-                    .addOnSuccessListener(taskSnapshot -> updateUserData())
-                    .addOnFailureListener(e -> Toast.makeText(requireContext(), "Failed to Upload Profile", Toast.LENGTH_SHORT).show());
-        }
-    }
-
-    private void updateUserData() {
-        FirestoreClient.getInstance().getUserInfoDocRef(mAuth.getUid())
-                .update(Student.HAS_PROFILE_PIC, true)
-                .addOnSuccessListener(aVoid -> showHomeFeed())
-                .addOnFailureListener(e -> {
-                    Log.i(TAG, "updateUserData: " + e.getMessage());
-                    Toast.makeText(requireContext(), "Failed to Upload Profile Picture. Try again Later", Toast.LENGTH_SHORT).show();
-                    showHomeFeed();
-                });
+        if (imageUri != null)
+            viewModel.doAction(new AuthAction.UploadProfile(imageUri));
     }
 
     private void showHomeFeed() {

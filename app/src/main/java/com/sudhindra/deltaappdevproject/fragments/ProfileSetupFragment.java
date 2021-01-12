@@ -28,8 +28,11 @@ import com.sudhindra.deltaappdevproject.clients.CloudStorageClient;
 import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentProfileSetupBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
-import com.sudhindra.deltaappdevproject.viewmodels.SignUpViewModel;
+import com.sudhindra.deltaappdevproject.viewmodels.CoreViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class ProfileSetupFragment extends Fragment {
 
     private static final String TAG = "ProfileSetupFragment";
@@ -39,8 +42,6 @@ public class ProfileSetupFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private Uri imageUri;
-
-    private SignUpViewModel signUpViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,8 +68,8 @@ public class ProfileSetupFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
 
-        signUpViewModel = new ViewModelProvider(requireActivity()).get(SignUpViewModel.class);
-        Log.i(TAG, "onViewCreated: " + signUpViewModel.getStudent().toString());
+        CoreViewModel viewModel = new ViewModelProvider(requireActivity()).get(CoreViewModel.class);
+        Log.i(TAG, "onViewCreated: " + viewModel.getStudent().toString());
 
         binding.addPhotoBt.setOnClickListener(v -> checkForPermission());
 

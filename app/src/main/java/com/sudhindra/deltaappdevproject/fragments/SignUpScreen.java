@@ -26,7 +26,7 @@ import com.sudhindra.deltaappdevproject.clients.FirestoreClient;
 import com.sudhindra.deltaappdevproject.databinding.FragmentSignUpScreenBinding;
 import com.sudhindra.deltaappdevproject.models.Student;
 import com.sudhindra.deltaappdevproject.utils.GsonUtil;
-import com.sudhindra.deltaappdevproject.viewmodels.SignUpViewModel;
+import com.sudhindra.deltaappdevproject.viewmodels.CoreViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,11 +34,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class SignUpScreen extends Fragment {
 
     private static final String TAG = "SignUpScreen", APP_ID = "1GP8H9THIC", USERS_INDEX = "users";
+
     private FragmentSignUpScreenBinding binding;
-    private SignUpViewModel signUpViewModel;
+
+    private CoreViewModel viewModel;
+
     private NavController navController;
 
     private FirebaseAuth mAuth;
@@ -87,7 +93,7 @@ public class SignUpScreen extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        signUpViewModel = new ViewModelProvider(requireActivity()).get(SignUpViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(CoreViewModel.class);
 
         navController = Navigation.findNavController(view);
 
@@ -131,7 +137,7 @@ public class SignUpScreen extends Fragment {
         binding.singUpProgressBar.setVisibility(View.VISIBLE);
         binding.signupBt.setVisibility(View.GONE);
         newStudent = new Student(fName, lName, Integer.parseInt(yos), branch, false, new ArrayList<>());
-        signUpViewModel.setStudent(newStudent);
+        viewModel.setStudent(newStudent);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     Log.i(TAG, "signUpUser,onSuccess: ");
